@@ -1,0 +1,24 @@
+name = "sub-api"
+main = "src/index.js"
+compatibility_date = "2026-10-01"
+
+# Same zone as your Pages site so cookies are first-party. Replace the domain.
+routes = [{ pattern = "sub.devtem.org/api/*", zone_name = "devtem.org" }]
+
+[vars]
+APP_ORIGIN = "https://sub.devtem.org" # exact origin, no trailing slash
+SUPABASE_URL = "https://ostmbucbsptftvbwhmjc.supabase.co"
+PAYSTACK_COUNTRY = "nigeria"
+PAYOUT_CURRENCY = "NGN"
+NEW_PAYOUT_COOLDOWN_HOURS = "24" # set "0" only for testing
+MFA_TRANSFER_MIN = "5000000" # minor units; transfers at/above this need MFA
+ADMIN_IPS = "" # optional comma list, empty = no IP restriction
+PAYSTACK_IP_CHECK = "true" # webhook only from Paystack IPs
+TURNSTILE_SITEKEY = ""
+TURNSTILE_DISABLED = "false" # "true" only for local dev
+
+# Secrets (never put these in this file):
+# wrangler secret put SUPABASE_ANON_KEY
+# wrangler secret put SUPABASE_SERVICE_KEY
+# wrangler secret put PAYSTACK_SECRET_KEY
+# wrangler secret put TURNSTILE_SECRET
